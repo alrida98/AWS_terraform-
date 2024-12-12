@@ -35,20 +35,25 @@ Step 4: Define your Configuration Files in your IDE
 
 Define provider.tf file using the below code :
 
-````provider "aws" {
+```
+provider "aws" {
     region = "us-east-1"
-}````
+}
+```
+
 
 
 In your Integrated Development Environment (IDE), open the terminal and navigate to the directory where you have created these configuration files.
 After navigating to the directory where your configuration files are located in your IDE's terminal, you can run the following command to initialize Terraform and prepare it for use with AWS:
 
+```
 terraform init
 
+```
 Running terraform init will install the necessary plugins and modules required for connecting to AWS and managing your infrastructure.
 
-4.Define main.tf where we create a AWS s3 bucket : https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
-
+Define main.tf where we create a AWS s3 bucket : https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
+```
 resource "aws_s3_bucket" "bucket1" {
     bucket = "web-bucket"
   
@@ -114,14 +119,14 @@ resource "aws_s3_bucket_policy" "public_read_access" {
 }
 EOF
 }
-
+```
 
 
 
 To run the teraform code : 
-
+```
 terraform apply -auto-approve
-
+```
 The code above will apply the necessary configurations for features such as static website hosting, bucket policies, and blocking public access to your bucket.
 Change the bucket name, region, and configurations as per your requirements when using the code from the Terraform documentation.
 
@@ -129,24 +134,29 @@ Change the bucket name, region, and configurations as per your requirements when
 Step 5: Define the Output file
 We use an output file to obtain your website link in your IDE, eliminating the need to access the link through the AWS Console.
 
-terraform apply -auto-approve
-It will give your website link as output as shown below
-s3
+```
+output "websiteendpoint" {
+    value =aws_s3_bucket.bucket1.website_endpoint
+  
+}
+
+```
 
 Step 6: Verify the Output
 Copy the link and paste the URL  in browser, which we got from output terminal 
 
 Summary of the code:
-
-1.Creates an S3 bucket 
-2. Configures the bucket's public access settings to allow public access 
-3. Uploads two files: index.html and error.html to the bucket. These will be used for the static website. 
-4. Configures the bucket for static website hosting, setting index.html as the default page and error.html as the error page.
-5. Sets a bucket policy that allows public read access to the contents of the bucket. https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html
-6. The final result is a publicly accessible static website hosted on AWS S3, with index.html as the homepage and error.html as the error page.
+ - Creates an S3 bucket
+ - Configures the bucket's public access settings to allow public access
+ - Uploads two files: index.html and error.html to the bucket. These will be used for the static website.
+ - Configures the bucket for static website hosting, setting index.html as the default page and error.html as the error page.
+ - Sets a bucket policy that allows public read access to the contents of the bucket. https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html
+ - The final result is a publicly accessible static website hosted on AWS S3, with index.html as the homepage and error.html as the error page.
 
 Links : 
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket.html
-https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html
+
+
+* https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration
+* https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket.html
+* https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html
 
