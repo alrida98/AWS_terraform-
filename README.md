@@ -8,15 +8,15 @@ In the Project we put to use the concepts of terraform along with AWS S3 bucket 
 
 1. AWS S3 bucket
 
-The AWS S3 bucket is used to store the web configuration HTML files
+* The AWS S3 bucket is used to store the web configuration HTML files
 
 2. Terraform
 
-Using the terraform IAC tool we write a terraform configuration file. We have reffered to the official doumentation as per : https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration
+* Using the terraform IAC tool we write a terraform configuration file. We have reffered to the official doumentation as per : https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration
 
 3. Basic HTML cwebsite
 
-We have used a basic HTML website to demostarte the same 
+*We have used a basic HTML website to demonstrate the same 
 
 
 # Steps
